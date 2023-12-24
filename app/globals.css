@@ -21,16 +21,24 @@
 body {
   color: var(--foreground-rgb);
   font-family: "Fuzzy Bubbles", cursive;
-  background-repeat: no-repeat;
-  background-color: var(--background-rgb);
-  background-blend-mode: overlay;
-  background-attachment: fixed;
-  background-size: cover;
-  background-image: url("/rm-bg.png");
-  opacity: 0.5;
 }
 
-/* body::after {
-  background-image: url("/rm-bg.png");
-  opacity: 0.5;
-} */
+.wrap {
+  overflow: hidden;
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+}
+
+.bg {
+  opacity: 0.3;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: auto;
+}
+
+.content {
+  position: relative;
+}

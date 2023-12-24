@@ -1,11 +1,18 @@
-import { fetchCharacter } from "@/lib/apis";
+import BasicTable from "@/components/BasicTable";
+import EpisodeRow from "@/components/EpisodeRow";
+import { fetchCharacter, fetchEpisodes } from "@/lib/apis";
+import { Table } from "@mui/joy";
+import Link from "next/link";
 import React from "react";
 
 type Props = { params: { id: string } };
 
-const page = async ({ params }: Props) => {
-  console.log("params: " + params.id);
+const CharacterPage = async ({ params }: Props) => {
   const character: Character = await fetchCharacter(params.id);
+  const episodeIds = character.episode.map((episode) =>
+    episode.substring(episode.lastIndexOf("/") + 1)
+  );
+  const episodes: Episode[] = await fetchEpisodes(episodeIds);
   return (
     <main className="p-2 flex flex-col justify-center items-center w-96">
       <div className="text-center mt-3 mb-2">
@@ -32,14 +39,33 @@ const page = async ({ params }: Props) => {
           alt={character.name}
         />
       </div>
-      <div className="w-100">
+      <div className="w-full">
         <div className="text-center mt-3 mb-1">
           <h2>Seen in Episodes</h2>
         </div>
-        {/* <Episodes data={charactersEpisodes} /> */}
+        <Table aria-label="basic table" className="w-full">
+          <thead>
+            <tr>
+              <th style={{ width: "40%" }} key={1}>
+                Name
+              </th>
+              <th style={{ width: "20%" }} key={1}>
+                Air date
+              </th>
+              <th style={{ width: "20%" }} key={1}>
+                Episode
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {episodes.map((episode, index) => {
+              return <EpisodeRow index={index} episode={episode} />;
+            })}
+          </tbody>
+        </Table>
       </div>
     </main>
   );
 };
 
-export default page;
+export default CharacterPage;

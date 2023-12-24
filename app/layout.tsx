@@ -18,11 +18,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body
-        className={"flex flex-col h-screen justify-between"}
-      >
+      <body className={"flex flex-col h-screen justify-between"}>
         <Navbar />
-        <div className="flex flex-col items-center">{children}</div>
+
+        <div className="wrap">
+          <img className="bg" src="/rm-bg.png" alt="" />
+          <div className="content">{children}</div>
+        </div>
+
         <Footer />
       </body>
     </html>

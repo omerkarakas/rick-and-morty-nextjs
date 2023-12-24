@@ -6,6 +6,12 @@ export const fetchEpisode = async (id: string): Promise<Episode> => {
   return data;
 };
 
+export const fetchEpisodes = async (ids: string[]): Promise<Episode[]> => {
+  const response = await fetch(apiEpisodes + ids);
+  const data = await response.json();
+  return data;
+};
+
 export const fetchCharacter = async (id: string): Promise<Character> => {
   const response = await fetch(apiCharacters + id);
   const data = await response.json();

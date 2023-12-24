@@ -21,7 +21,7 @@ type Character = {
   };
   location: { name: string; url: string };
   image: string;
-  episodes: string[];
+  episode: string[];
   url: string;
   create: Date;
 };
