@@ -24,7 +24,7 @@ body {
 }
 
 .wrap {
-  overflow: hidden;
+  overflow: scroll;
   position: relative;
   height: 100vh;
   width: 100vw;
@@ -41,4 +41,23 @@ body {
 
 .content {
   position: relative;
+}
+
+.main-home {
+  padding: 0.2rem;
+  text-align: center;
+  width: 96%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .seasons-container {
+    height: 200px;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
 }

@@ -6,6 +6,7 @@ type Episode = {
   characters: string[];
   url: string;
   created: Date;
+  season: string;
 };
 
 type Character = {
